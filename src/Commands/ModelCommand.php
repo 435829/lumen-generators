@@ -1,5 +1,6 @@
 <?php namespace Wn\Generators\Commands;
 
+use \Illuminate\Support\Str;
 
 class ModelCommand extends BaseCommand {
 
@@ -89,7 +90,7 @@ class ModelCommand extends BaseCommand {
             foreach ($items as $item) {
                 $item['type'] = $type;
                 if(! $item['model']){
-                    $item['model'] = $this->getNamespace() . '\\' . ucwords(str_singular($item['name']));
+                    $item['model'] = $this->getNamespace() . '\\' . ucwords(Str::singular($item['name']));
                 } else if(strpos($item['model'], '\\') === false ){
                     $item['model'] = $this->getNamespace() . '\\' . $item['model'];
                 }
